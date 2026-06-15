@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Chase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Start Screen -->
+  <div id="screen-start" class="screen active">
+    <div class="start-card">
+      <h1 class="game-title">Word Chase</h1>
+      <p class="subtitle">A two-player word-collecting race</p>
+
+      <div class="controls-grid">
+        <div class="controls-card blue">
+          <h2>Player 1</h2>
+          <table class="controls-table">
+            <tr><td><kbd>W A S D</kbd></td><td>Move</td></tr>
+            <tr><td><kbd>F</kbd></td><td>Confirm word</td></tr>
+            <tr><td><kbd>G</kbd></td><td>Drop last letter</td></tr>
+          </table>
+        </div>
+        <div class="controls-card red">
+          <h2>Player 2</h2>
+          <table class="controls-table">
+            <tr><td><kbd>↑ ← ↓ →</kbd></td><td>Move</td></tr>
+            <tr><td><kbd>Enter</kbd></td><td>Confirm word</td></tr>
+            <tr><td><kbd>Backspace</kbd></td><td>Drop last letter</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="powerup-legend">
+        <h3>Power-Ups</h3>
+        <div class="powerup-items">
+          <span class="pu-item"><span class="pu-icon speed">⚡</span> Speed Boost – 2× speed for 5s</span>
+          <span class="pu-item"><span class="pu-icon freeze">❄</span> Freeze Opponent – freeze 3s</span>
+          <span class="pu-item"><span class="pu-icon bonus">★</span> Bonus Drop – drop 5 letters</span>
+        </div>
+      </div>
+
+      <div class="scoring-legend">
+        <h3>Scoring</h3>
+        <p>3 letters = 10 pts &nbsp;|&nbsp; 4 = 20 &nbsp;|&nbsp; 5 = 35 &nbsp;|&nbsp; 6 = 55 &nbsp;|&nbsp; 7+ = 80 + 10/extra</p>
+        <p>+5 pts per rare letter (Q, Z, X, J) in word</p>
+      </div>
+
+      <button id="btn-start" class="btn-primary">Start Game</button>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="screen-game" class="screen">
+    <div id="hud">
+      <div class="hud-player blue-hud">
+        <span class="hud-name">P1</span>
+        <span class="hud-score" id="score-p1">0</span>
+        <div class="hud-tray" id="tray-p1"></div>
+        <div class="hud-powerup" id="pu-p1"></div>
+      </div>
+
+      <div class="hud-center">
+        <div id="timer" class="timer">2:00</div>
+        <div id="flash-msg" class="flash-msg"></div>
+      </div>
+
+      <div class="hud-player red-hud">
+        <span class="hud-name">P2</span>
+        <span class="hud-score" id="score-p2">0</span>
+        <div class="hud-tray" id="tray-p2"></div>
+        <div class="hud-powerup" id="pu-p2"></div>
+      </div>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+  </div>
+
+  <!-- Result Screen -->
+  <div id="screen-result" class="screen">
+    <div class="result-card">
+      <div id="result-winner" class="result-winner"></div>
+      <div class="result-scores">
+        <div class="result-player blue-result">
+          <h2>Player 1</h2>
+          <div class="result-score" id="result-score-p1">0</div>
+          <div class="result-words" id="result-words-p1"></div>
+        </div>
+        <div class="result-player red-result">
+          <h2>Player 2</h2>
+          <div class="result-score" id="result-score-p2">0</div>
+          <div class="result-words" id="result-words-p2"></div>
+        </div>
+      </div>
+      <button id="btn-again" class="btn-primary">Play Again</button>
+    </div>
+  </div>
+
+  <script src="js/wordValidator.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/letter.js"></script>
+  <script src="js/powerup.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
